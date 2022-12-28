@@ -15,10 +15,29 @@ function calculatePerformance(fn, n) {
     console.log('Average : ', totalTime / n)
 }
 
+function fillArray(n) {
+    const array = new Array(parseInt(n / 2) + 1)
+    for (var i = 0; i < n; i++) {
+        array[i] = (i + 1)
+    }
+    return array
+}
+
+
+function getZeroFiledArray(n) {
+    const arr = new Array(n)
+    while (n) {
+        arr[--n] = 0
+    }
+    return arr
+}
+
+
 module.exports = {
 
     logTime,
-    calculatePerformance
-
+    calculatePerformance,
+    fillArray,
+    getZeroFiledArray
 
 }
