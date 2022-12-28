@@ -22,6 +22,7 @@ var finalValueAfterOperations = function (operations) {
     let l = operations.length
     let op;
     for (var i = 0; i < l; i++) {
+        op = operations[i]
         if (op === 'X++' || op === '++X') x++
         else x--
     }
