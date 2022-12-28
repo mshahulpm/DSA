@@ -26,39 +26,24 @@ var maxArea = function (height) {
  * @return {number[][]}
  */
 var threeSum = function (nums) {
-    let resmap = {}
+    let numMap = {}
+    let result = []
     let l = nums.length
     if (l < 3) {
         return []
     }
-    nums.sort(function (a, b) { return a - b });
-    if (nums[0] === nums[l - 1] && nums[0] == 0) return [0, 0, 0]
-    if (nums[0] === -1 && nums[l - 1] === 1 && nums[l / 2] === 0 && l > 100) return [
-        [-1, 0, 1], [0, 0, 0]
-    ]
-    let a, b, c;
-    for (var i = 0; i < l - 2; i++) {
-        a = nums[i]
-        if (a > 0) {
-            return Object.values(resmap)
-        }
-        for (var j = i + 1; j < l - 1; j++) {
-            b = nums[j]
-            if (a === (-b) && a != 0) {
-                console.log(a, b)
-                break
-            }
-            for (var k = j + 1; k < l; k++) {
-                c = nums[k]
-                if ((a + b + c) == 0) {
-                    resmap[[a, b, c]] = [a, b, c]
-                }
-            }
-        }
+    for (var i = 0; i < l; i++) {
+        numMap[nums[i]] = (numMap[nums[i]] || 0) + 1
     }
-    let res = Object.values(resmap)
-    return res.reverse()
+
+    const num = Object.keys(numMap).map(it => +it).sort((a, b) => a - b)
+    const nl = num.length
+    let a, b, c;
+    for (var i = 0; i < nl; i++) {
+        a = num[i]
+
+    }
+
 };
 
 console.log(threeSum([-4, -2, 1, -5, -4, -4, 4, -2, 0, 4, 0, -2, 3, 1, -5, 0]))
-console.log([1, 2, 3, 4].reverse())
