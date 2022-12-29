@@ -20,14 +20,14 @@ var maxArea = function (height) {
     return maxArea;
 };
 
-
+// not completely full filed 
 /**
  * @param {number[]} nums
  * @return {number[][]}
  */
 var threeSum = function (nums) {
     let numMap = {}
-    let result = []
+    let resMap = {}
     let l = nums.length
     if (l < 3) {
         return []
@@ -39,11 +39,42 @@ var threeSum = function (nums) {
     const num = Object.keys(numMap).map(it => +it).sort((a, b) => a - b)
     const nl = num.length
     let a, b, c;
-    for (var i = 0; i < nl; i++) {
+    for (let i = 0; i < nl; i++) {
         a = num[i]
-
+        if (a == 0 && numMap['0'] > 2) {
+            resMap[[a, a, a]] = [a, a, a]
+        }
+        else if (a < 0) {
+            for (let j = 0; j <= -a; j++) {
+                b = numMap[j] ? j : undefined
+                c = numMap[-a + j] ? (-a + j) : undefined
+                if (a + b + c === 0) {
+                    let ans = [a, b, c].sort((a, b) => a - b)
+                    if (b == c) {
+                        if (numMap[b] > 1) resMap[[c, b, a]] = [c, b, a].sort((a, b) => a - b)
+                    } else {
+                        resMap[ans] = ans
+                    }
+                }
+            }
+        }
+        else if (a > 0) {
+            for (let j = 0; j >= -a; j--) {
+                b = numMap[j] ? j : undefined
+                c = numMap[-a - j] ? (-a - j) : undefined
+                if (a + b + c === 0) {
+                    let ans = [c, b, a].sort((a, b) => a - b)
+                    if (b == c) {
+                        if (numMap[b] > 1) resMap[[c, b, a]] = [c, b, a].sort((a, b) => a - b)
+                    } else {
+                        resMap[ans] = ans
+                    }
+                }
+            }
+        }
     }
 
+    return Object.values(resMap)
 };
 
-console.log(threeSum([-4, -2, 1, -5, -4, -4, 4, -2, 0, 4, 0, -2, 3, 1, -5, 0]))
+console.log(threeSum([1, 1, -2]))
