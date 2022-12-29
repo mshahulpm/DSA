@@ -41,13 +41,21 @@ var threeSum = function (nums) {
     let a, b, c;
     for (let i = 0; i < nl; i++) {
         a = num[i]
-        if (a == 0 && numMap['0'] > 2) {
-            resMap[[a, a, a]] = [a, a, a]
+        if (a == 0) {
+            if (numMap['0'] > 2) resMap[[a, a, a]] = [a, a, a]
+            continue
         }
+
+        if (numMap[-(a / 2)] > 1) {
+            let anss = [a, -(a / 2), -(a / 2)].sort((a, b) => a - b)
+            resMap[anss] = anss
+        }
+
         else if (a < 0) {
             for (let j = 0; j <= -a; j++) {
                 b = numMap[j] ? j : undefined
                 c = numMap[-a + j] ? (-a + j) : undefined
+
                 if (a + b + c === 0) {
                     let ans = [a, b, c].sort((a, b) => a - b)
                     if (b == c) {
@@ -77,4 +85,4 @@ var threeSum = function (nums) {
     return Object.values(resMap)
 };
 
-console.log(threeSum([1, 1, -2]))
+console.log(threeSum([-1, 0, 1, 0]))
