@@ -146,6 +146,7 @@ class LinkedList {
     }
 
     reverse() {
+
         let first = this.head
         let second = this.head.next
         this.tail = this.head
@@ -195,3 +196,5 @@ console.dir(ll.tail, { depth: true })
 ll.reverse()
 ll.printList()
 console.dir(ll.tail, { depth: true })
+
+
