@@ -58,3 +58,7 @@ console.log(
     string.repeat(2),
     string
 )
+
+let ar = [1, 2, 3]
+
+console.log(ar);

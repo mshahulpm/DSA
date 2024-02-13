@@ -8,7 +8,9 @@ class ListNode {
 
 class LinkedList {
 
+    /** @type {ListNode|null} */
     head = null
+    /** @type {ListNode|null} */
     tail = null
     length = 0
 
