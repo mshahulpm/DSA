@@ -1,7 +1,6 @@
 
 
-
-class Queue {
+class Queue2 {
 
     constructor() {
         this.items = {}
@@ -12,7 +11,6 @@ class Queue {
     enqueue(elm) {
         this.items[this.backIndex] = elm
         this.backIndex++
-        return true
     }
 
     dequeue() {
@@ -28,29 +26,25 @@ class Queue {
     }
 
     toArray() {
-
-        let res = []
+        const res = []
         for (let i = this.frontIndex; i < this.backIndex; i++) {
             res.push(this.items[i])
         }
-
         return res
     }
 
 }
 
+const q = new Queue2()
 
-let q = new Queue()
-
+q.enqueue(10)
+q.enqueue(9)
 q.enqueue(1)
-q.enqueue(2)
-q.enqueue(3)
-q.enqueue(4)
 console.log(q.toArray());
 
+console.log(q.peek());
+
 q.dequeue()
 q.dequeue()
-q.dequeue()
-q.dequeue()
-q.dequeue()
-console.log(q.toArray(), q);
+console.log(q.toArray());
+
